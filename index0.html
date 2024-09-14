@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前向き思考トレーニングアプリ</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>前向き思考トレーニングアプリ</h1>
+        <p>おつかれさまです！お好きなコースで気持ちを切り替えていきましょう！</p>
+        <button id="selfCompassionBtn">Self-Compassionコース</button>
+        <button id="coachingBtn">Coachingコース</button>
+    </div>
+
+    <script>
+        $('#selfCompassionBtn').on('click', function() {
+            window.location.href = 'self-compassion.html';
+        });
+        
+        $('#coachingBtn').on('click', function() {
+            window.location.href = 'coaching.html';
+        });
+    </script>
+
+</body>
+</html>

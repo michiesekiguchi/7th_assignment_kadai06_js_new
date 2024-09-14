@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachingコース</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Coachingコース</h1>
+        <form id="coachingForm">
+            <label for="date">日付：</label>
+            <input type="date" id="date"><br>
+
+            <label for="aware">何がありましたか？</label>
+            <textarea id="aware"></textarea><br>
+
+            <label for="aware2">私は批判する人になっているのだろうか？ これはうまくいっているのだろうか？</label>
+            <textarea id="aware2"></textarea><br>
+
+            <label for="breath">身体は私になにを教えてくれているのだろうか？ 深呼吸が必要か？</label>
+            <textarea id="breath"></textarea><br>
+
+            <label for="curiosity">何が実際に起こっているのだろうか？ 見落としているものは？</label>
+            <textarea id="curiosity"></textarea><br>
+
+            <label for="decide">どんな決断をすればいいのか？</label>
+            <textarea id="decide"></textarea><br>
+
+            <button type="button" id="registerBtn">登録する</button>
+            <button type="button" id="csvExportBtn">CSV抽出</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

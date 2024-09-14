@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Compassionコース</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Self-Compassionコース</h1>
+        <form id="selfCompassionForm">
+            <label for="date">日付：</label>
+            <input type="date" id="date"><br>
+
+            <label for="whatHappened">何がありましたか？</label>
+            <textarea id="whatHappened"></textarea><br>
+
+            <label for="feelings">どんな気持ちですか？</label>
+            <textarea id="feelings"></textarea><br>
+
+            <label for="selfTalk">あなたが親友に声をかけるように自分に声かけしてあげてください</label>
+            <textarea id="selfTalk"></textarea><br>
+
+            <label for="nextAction">次にどういった行動をしてみますか？</label>
+            <textarea id="nextAction"></textarea><br>
+
+            <button type="button" id="registerBtn">登録する</button>
+            <button type="button" id="csvExportBtn">CSV抽出</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // jQueryで登録ボタンのクリックイベント
+        $('#registerBtn').click(function () {
+            const formData = {
+                date: $('#date').val(),
+                whatHappened: $('#whatHappened').val(),
+                feelings: $('#feelings').val(),
+                selfTalk: $('#selfTalk').val(),
+                nextAction: $('#nextAction').val()
+            };
+            
+            // 登録メッセージを表示
+            $('#message').text('あなたが幸せでありますように！');
+
+            // コンソールにデータを出力（実際にはデータベースやストレージに保存する処理）
+            console.log("登録データ: ", formData);
+        });
+
+        // jQueryでCSV抽出ボタンのクリックイベント
+        $('#csvExportBtn').click(function () {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + "日付,何がありましたか,どんな気持ちですか,自己への声かけ,次の行動\n"
+                + $('#date').val() + ","
+                + $('#whatHappened').val() + ","
+                + $('#feelings').val() + ","
+                + $('#selfTalk').val() + ","
+                + $('#nextAction').val();
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "self_compassion_data.csv");
+            document.body.appendChild(link);
+            link.click();
+        });
+    </script>
+</body>
+</html>
