@@ -17,24 +17,68 @@
             <label for="aware">何がありましたか？</label>
             <textarea id="aware"></textarea><br>
 
-            <label for="aware2">私は批判する人になっているのだろうか？ これはうまくいっているのだろうか？</label>
+            <label for="aware2">批判する人になっていませんか？ 現状はうまくいっていますか？</label>
             <textarea id="aware2"></textarea><br>
 
-            <label for="breath">身体は私になにを教えてくれているのだろうか？ 深呼吸が必要か？</label>
+            <label for="breath">身体はどういう状態ですか？ 深呼吸が必要ではありませんか？</label>
             <textarea id="breath"></textarea><br>
 
-            <label for="curiosity">何が実際に起こっているのだろうか？ 見落としているものは？</label>
+            <label for="curiosity">実際に何が起こっていますか？ 見落としていることはありませんか？</label>
             <textarea id="curiosity"></textarea><br>
 
-            <label for="decide">どんな決断をすればいいのか？</label>
+            <label for="decide">どのような決断をすればよいでしょうか？</label>
             <textarea id="decide"></textarea><br>
 
             <button type="button" id="registerBtn">登録する</button>
             <button type="button" id="csvExportBtn">CSV抽出</button>
+            <button type="button" id="homeBtn">ホームに戻る</button>   
         </form>
         <p id="message"></p>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+        // jQueryで登録ボタンのクリックイベント
+        $('#registerBtn').click(function () {
+            const formData = {
+                date: $('#date').val(),
+                aware: $('#aware').val(),
+                aware2: $('#aware2').val(),
+                breath: $('#breath').val(),
+                curiosity: $('#curiosity').val(),
+                decide: $('#decide').val()
+            };
+            
+            // 登録メッセージを表示
+            $('#message').text('学習する人への道が開けましたね！');
+
+            // コンソールにデータを出力（実際にはデータベースやストレージに保存する処理）
+            console.log("登録データ: ", formData);
+        });
+
+        // jQueryでCSV抽出ボタンのクリックイベント
+        $('#csvExportBtn').click(function () {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + "日付,何がありましたか,気づき,深呼吸,好奇心,決断\n"
+                + $('#date').val() + ","
+                + $('#aware').val() + ","
+                + $('#aware2').val() + ","
+                + $('#breath').val() + ","
+                + $('#curiosity').val() + ","
+                + $('#decide').val();
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "coaching_data.csv");
+            document.body.appendChild(link);
+            link.click();
+        });
+
+
+        $('#homeBtn').on('click', function() {
+            window.location.href = 'index.html';
+        });
+
+    </script>
 </body>
 </html>
